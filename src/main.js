@@ -1,18 +1,31 @@
 //入口文件
 import Vue from "vue";
+// 导入router .js 路由对象
 import router from './router'
 
 // 2.1 导入 vue-resource
 import VueResource from 'vue-resource'
+// 导入格式化时间插件
+import moment from 'moment'
+
+// 定义全局的过滤器(用来处理时间字符串)
+Vue.filter('dateFormat', function (dataStr, pattern="YYYY-MM-DD HH:mm:ss") {
+  return moment(dataStr).format(pattern)
+})
+
 // 2.2 安装 vue-resource
 Vue.use(VueResource)
+
+// 设置请求的根路径
+Vue.http.options.root = 'https://api.jisuapi.com';
+
 
 
 //导入 App 根组件
 import App from "./App.vue";
 
 // 按需导入Mint-UI 中的组件
-import { Header , Swipe, SwipeItem} from "mint-ui";
+import { Header ,Button, Swipe, SwipeItem} from "mint-ui";
 
 // 导入MUI 的样式
 import './lib/mui/css/mui.min.css'
@@ -21,9 +34,13 @@ import './lib/mui/css/icons-extra.css'
 
 Vue.component(Header.name, Header);
 
+Vue.component(Button.name, Button);
+
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+
+Vue.component(Button.name, Button);
 
 
 var vm = new Vue({
