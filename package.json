@@ -30,7 +30,7 @@
     "vue-router": "^3.3.2",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
