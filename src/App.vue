@@ -25,7 +25,7 @@
 
       <router-link class="mui-tab-item-llb" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -57,6 +57,7 @@ export default {
     }
   },
    watch: {
+     // 监听url 地址
     "$route.path": function(newVal) {
       if (newVal === "/home") {
         this.flag = false;

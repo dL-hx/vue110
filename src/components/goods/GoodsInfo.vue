@@ -102,11 +102,13 @@
                 ],
                 // 获取到的商品的信息
                 goodsinfo: {
+                    title:'小米(Mi) Note 16g 双网通版',
                     goods_no: 100000,
                     stock_quantity: 60,
                     add_time: '2020-07-22',
                     sell_price:2199,
-                    market_price:2699
+                    market_price:2699,
+                    img_url:"https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=250&h=250&f=webp&q=90"
 
                 },
 
@@ -118,6 +120,7 @@
         created() {
             // this.getLunbotu()
             //  this.getGoodsInfo()
+
         },
         methods: {
             getLunbotu() {
@@ -155,6 +158,13 @@
             addToShopCart() {
                 // 添加到购物车
                 this.ballFlag = !this.ballFlag;
+
+                //  {id:商品的id, count:要购买的数量, price: 商品的单价, selected: false, title:title,img_url:img_url }
+                // 拼接出一个, 要保存到store 中的car数组中的 商品的对象
+                var goodsinfo= {id: this.id, img_url:this.goodsinfo.img_url ,title:this.goodsinfo.title, count:this.selectedCount, price: this.goodsinfo.sell_price,selected: true } 
+
+                // 调用store 中的mutations 来将商品加入购物车
+                this.$store.commit('addToCar', goodsinfo)
             },
             beforeEnter(el) {
                 el.style.transform = "translate(0,0)"
